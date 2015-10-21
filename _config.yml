@@ -1,0 +1,38 @@
+url: https://anya.io
+
+# Site settings
+title: Anya Belova
+email: anya@anya.io
+description:
+  "I am Anya. I live in Phuket and strive to the the Artist."
+
+# Color settings (hex-codes without the leading hash-tag)
+color:
+  primary: ff6600
+  secondary: ffcc00
+  secondary-dark: 333
+
+# Team names, titles and social links
+anya:
+  name: Anya Belova
+  pic: anya
+  position: Artist/Designer
+  social:
+    - title: instagram
+      url: http://instagram.com/anya_phuket
+
+social:
+  - title: twitter
+    url: http://twitter.com/anya_io
+  - title: instagram
+    url: http://bitbucket.org/anya_phuket
+  - title: github
+    url: http://github.com/anyaio
+
+# Postal address (add as many lines as necessary)
+address:
+  - line: Phuket, Thailand
+
+# Build settings
+markdown: kramdown
+permalink: pretty

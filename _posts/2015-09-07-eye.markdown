@@ -1,0 +1,14 @@
+---
+title: Eye
+subtitle: Drawing
+layout: default
+modal-id: eye
+date: 2014-09-07
+img: eye.jpg
+thumbnail: eye.jpg
+alt: eye
+project-date: September 2015
+client: None
+category: Drawing
+description: Getting good with eyes...
+---
