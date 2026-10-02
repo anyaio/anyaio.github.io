@@ -1,0 +1,9 @@
+---
+title: Sea Horse
+layout: default
+date: 2015-10-21
+img: seahorse.jpg
+alt: Sea Horse
+category: Drawing
+description: "Experimenting with different techniques"
+---

@@ -1,0 +1,9 @@
+---
+title: Cry
+layout: default
+date: 2015-06-01
+img: cry.jpg
+alt: Cry
+category: Drawing
+description: "Comic Girl Drawing"
+---

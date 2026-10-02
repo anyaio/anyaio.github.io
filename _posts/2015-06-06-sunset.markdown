@@ -1,0 +1,9 @@
+---
+title: Sunset
+layout: default
+date: 2015-06-06
+img: sunset.jpg
+alt: Sunset
+category: Painting
+description: "Sunset in Phuket, Thailand"
+---

@@ -1,0 +1,9 @@
+---
+title: Vase
+layout: default
+date: 2015-06-08
+img: vase.jpg
+alt: Vase
+category: Painting
+description: "Trying new styles"
+---

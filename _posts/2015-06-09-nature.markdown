@@ -1,0 +1,9 @@
+---
+title: Nature
+layout: default
+date: 2015-06-09
+img: nature.jpg
+alt: Nature
+category: Painting
+description: "Landscape"
+---

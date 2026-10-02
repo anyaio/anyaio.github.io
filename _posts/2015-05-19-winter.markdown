@@ -1,0 +1,9 @@
+---
+title: Winter
+layout: default
+date: 2015-05-19
+img: winter.jpg
+alt: Winter
+category: Painting
+description: "Winter in Russia"
+---

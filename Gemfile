@@ -1,4 +1,2 @@
 source 'https://rubygems.org'
-gem 'jekyll'
-gem 'slim'
-gem 'redcarpet'
+gem 'jekyll', '~> 4.4'
