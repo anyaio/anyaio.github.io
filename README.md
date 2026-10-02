@@ -1,39 +1,68 @@
 # anya.io
 
-Anya's portfolio. Jekyll site, deployed to GitHub Pages by GitHub Actions.
+Anya's portfolio. Live at https://anyaio.github.io
 
-## How it works
+Every change to the `source` branch publishes itself in about a minute.
+Watch it in the **Actions** tab: green check means the site is updated.
 
-- `source` branch holds the site. Every push to `source` builds and deploys it
-  (`.github/workflows/pages.yml`). Progress: the **Actions** tab on GitHub.
-- `master` holds the built site that GitHub Pages serves. The workflow overwrites it; never edit it by hand.
-- The whole page lives in `_layouts/default.html`. The **Works** grid and the
-  pop-ups are generated from the files in `_posts/`, newest first.
+## Add a new work in the browser (Windows, nothing to install)
 
-## Add a new work (from the GitHub website)
-
-1. Upload the picture to `img/portfolio/Uploads/`.
-   Optional: a smaller square copy with the same name to `img/portfolio/Uploads/Thumbs/`.
-2. In `_posts/`, click **Add file → Create new file**, name it
-   `YYYY-MM-DD-short-name.markdown` (e.g. `2026-09-29-eco-room-1.markdown`), paste:
+1. Open https://github.com/anyaio/anyaio.github.io and check the branch says `source`.
+2. Go to `img/portfolio/Uploads/` → **Add file → Upload files** → drop the picture → **Commit changes**.
+   Name pictures in lowercase with dashes, no spaces: `eco-room-4.jpg`.
+3. Optional: upload a smaller square copy with the same name to `img/portfolio/Uploads/Thumbs/`.
+   Without it the grid uses the big picture.
+4. Go to `_posts/` → **Add file → Create new file**.
+   Name it `YYYY-MM-DD-short-name.markdown`, for example `2026-10-02-eco-room-4.markdown`.
+5. Paste this and change the values:
 
    ```yaml
    ---
    title: Eco Room Level Blockout
    layout: default
-   date: 2026-09-29
-   img: Uploads/eco-room-1.jpg
-   thumbnail: Uploads/Thumbs/eco-room-1.jpg   # optional, img is used if missing
+   date: 2026-10-02
+   img: Uploads/eco-room-4.jpg
+   thumbnail: Uploads/Thumbs/eco-room-4.jpg
    alt: Eco Room Level Blockout
    category: 3D
    description: "Work-in-progress render"
    ---
    ```
-3. Commit to `source`. The site updates in about a minute.
 
-## Run locally
+6. **Commit changes**. Open the **Actions** tab, wait for the green check, refresh the site.
 
-```sh
-bundle install
-bundle exec jekyll serve   # http://localhost:4000
-```
+Delete the `thumbnail:` line when there is no small copy.
+Keep the three dashes `---` at the top and bottom.
+Put the description in quotes.
+
+If the Actions run turns red, open it: the log names the file and line to fix.
+
+## Edit a work
+
+Open its file in `_posts/`, click the pencil, change, **Commit changes**.
+To remove a work, open its file → `...` menu → **Delete file**.
+
+## Edit the page itself
+
+All the text (skills, story, contacts) lives in `_layouts/default.html`.
+Edit it the same way: pencil → change → **Commit changes**.
+
+## Preview on your own computer (optional)
+
+1. Install Ruby from https://rubyinstaller.org (Ruby+Devkit 3.3, x64). Tick "Run ridk install" at the end, press Enter.
+2. Install GitHub Desktop from https://desktop.github.com and clone `anyaio/anyaio.github.io`.
+3. In GitHub Desktop: **Repository → Open in Command Prompt**, then run:
+
+   ```
+   bundle install
+   bundle exec jekyll serve
+   ```
+
+4. Open http://localhost:4000. The page refreshes when you save a file.
+5. Happy with it? In GitHub Desktop write a summary, **Commit to source**, then **Push origin**.
+
+## How it works
+
+- `source` holds the site: Jekyll 4. The Works grid and pop-ups come from `_posts/`, newest first.
+- `.github/workflows/pages.yml` builds `source` and pushes the result to `master`.
+- GitHub Pages serves `master`. The workflow overwrites it on every run, so edit `source` only.
