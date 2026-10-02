@@ -1,6 +1,6 @@
 # anya.io
 
-Anya's portfolio. Live at https://anyaio.github.io
+Anya's portfolio. Live at https://anya.io
 
 Every change to the `source` branch publishes itself in about a minute.
 Watch it in the **Actions** tab: green check means the site is updated.
