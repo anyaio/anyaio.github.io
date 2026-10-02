@@ -1,9 +1,6 @@
 ---
 title: Face
-layout: default
-date: 2015-05-09
 img: face.jpg
-alt: Face
 category: Drawing
 description: "I tried drawing a self portrait, but then ended up with this..."
 ---

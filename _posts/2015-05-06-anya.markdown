@@ -1,9 +1,6 @@
 ---
 title: Anya
-layout: default
-date: 2015-05-06
 img: anya.jpg
-alt: Anya
 category: Drawing
 description: "Kawaii Room Decor"
 ---

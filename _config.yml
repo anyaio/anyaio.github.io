@@ -4,3 +4,6 @@ description: "I am Anya. I live in Phuket and strive to become an Artist."
 markdown: kramdown
 permalink: pretty
 exclude: [README.md, Gemfile, Gemfile.lock, LICENSE, Rakefile]
+defaults:
+  - scope: {path: ""}
+    values: {layout: default}

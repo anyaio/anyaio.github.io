@@ -1,9 +1,6 @@
 ---
 title: Live
-layout: default
-date: 2015-09-07
 img: live.jpg
-alt: Live
 category: Painting
 description: "We are going live!"
 ---

@@ -1,9 +1,6 @@
 ---
 title: Quality
-layout: default
-date: 2015-08-09
 img: quality.jpg
-alt: Quality
 category: Lettering
 description: "Another lettering practice"
 ---

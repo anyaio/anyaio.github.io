@@ -1,9 +1,6 @@
 ---
 title: Eye
-layout: default
-date: 2015-09-07
 img: eye.jpg
-alt: Eye
 category: Drawing
 description: "Getting better with eyes."
 ---
