@@ -1,6 +1,0 @@
----
-title: Cry
-img: cry.jpg
-category: Drawing
-description: "Comic Girl Drawing"
----

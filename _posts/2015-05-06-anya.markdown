@@ -1,6 +1,0 @@
----
-title: Anya
-img: anya.jpg
-category: Drawing
-description: "Kawaii Room Decor"
----

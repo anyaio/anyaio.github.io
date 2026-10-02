@@ -1,6 +1,0 @@
----
-title: Eye
-img: eye1.jpg
-category: Drawing
-description: "I like drawing eyes"
----

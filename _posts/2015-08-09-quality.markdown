@@ -1,6 +1,0 @@
----
-title: Quality
-img: quality.jpg
-category: Lettering
-description: "Another lettering practice"
----

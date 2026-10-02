@@ -1,6 +1,0 @@
----
-title: Live
-img: live.jpg
-category: Painting
-description: "We are going live!"
----

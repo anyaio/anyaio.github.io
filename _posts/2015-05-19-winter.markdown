@@ -1,6 +1,0 @@
----
-title: Winter
-img: winter.jpg
-category: Painting
-description: "Winter in Russia"
----

@@ -1,6 +1,0 @@
----
-title: Eye
-img: eye.jpg
-category: Drawing
-description: "Getting better with eyes."
----

@@ -1,6 +1,0 @@
----
-title: Nature
-img: nature.jpg
-category: Painting
-description: "Landscape"
----

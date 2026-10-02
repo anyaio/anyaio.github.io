@@ -1,6 +1,0 @@
----
-title: Sea Horse
-img: seahorse.jpg
-category: Drawing
-description: "Experimenting with different techniques"
----

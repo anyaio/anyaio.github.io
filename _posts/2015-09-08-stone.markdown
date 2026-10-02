@@ -1,6 +1,0 @@
----
-title: Headphones cable holder
-img: stone.jpg
-category: Decoration
-description: "Stone painting in art class"
----

@@ -1,6 +1,0 @@
----
-title: Face
-img: face.jpg
-category: Drawing
-description: "I tried drawing a self portrait, but then ended up with this..."
----

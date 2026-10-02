@@ -1,6 +1,0 @@
----
-title: Vase
-img: vase.jpg
-category: Painting
-description: "Trying new styles"
----
