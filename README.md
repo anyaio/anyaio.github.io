@@ -6,7 +6,7 @@ Anya's portfolio. Jekyll site, deployed to GitHub Pages by GitHub Actions.
 
 - `source` branch holds the site. Every push to `source` builds and deploys it
   (`.github/workflows/pages.yml`). Progress: the **Actions** tab on GitHub.
-- `master` is the old (2015) built output. It is no longer used.
+- `master` holds the built site that GitHub Pages serves. The workflow overwrites it; never edit it by hand.
 - The whole page lives in `_layouts/default.html`. The **Works** grid and the
   pop-ups are generated from the files in `_posts/`, newest first.
 
