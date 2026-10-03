@@ -37,7 +37,7 @@ Name: Anya Belova. Domain anya.io. The 2015 voice ("let me design for you", "my 
 
 - Current work: `img/portfolio/eco-room-1..3.jpg` (Eco Room Level Blockout, 3D, Sep 2026).
 - Early work: 15 images in `img/portfolio/` (2015).
-- Portrait `img/team/anya.jpg` is from 2015; no current portrait. No CV, clients or studio credits on hand: do not invent them.
+- No current portrait (the 2015 one was removed). No CV, clients or studio credits on hand: do not invent them.
 
 ## Product Principles
 
