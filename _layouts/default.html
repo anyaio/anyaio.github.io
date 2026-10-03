@@ -1,389 +1,114 @@
-<!DOCTYPE html>
-<html>
-
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Anya Belova</title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="description" content="I am Anya. I live in Phuket and strive to become an Artist.">
-    <link rel="canonical" href="{{ site.url }}/">
-
-    <!-- Custom CSS & Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-    <link rel="stylesheet" href="/style.css">
-
-    <!-- Custom Fonts -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-
-    <meta property="og:image" content="http://anya.io/img/header-bg.jpg" />
-    <meta property="og:title" content="Let me design this for you" />
-    <meta property="og:url" content="http://anya.io"/>
-    <meta property="og:site_name" content="Anya Belova. Designer." />
-    <meta property="og:type" content="website" />
+<!doctype html>
+<html lang="en" class="bg-neutral-950">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anya Belova — Environment Artist</title>
+  <meta name="description" content="Anya Belova, game and 3D environment artist. Level blockouts and renders.">
+  <link rel="canonical" href="{{ site.url }}/">
+  {% assign hero = site.data.works | first %}
+  <meta property="og:title" content="Anya Belova — Environment Artist">
+  <meta property="og:image" content="{{ site.url }}/img/portfolio/{{ hero.img }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+    }
+    dialog[open] { opacity: 1; transform: none; }
+    dialog { opacity: 0; transform: scale(.98); transition: opacity .3s cubic-bezier(.16,1,.3,1), transform .3s cubic-bezier(.16,1,.3,1), overlay .3s allow-discrete, display .3s allow-discrete; }
+    @starting-style { dialog[open] { opacity: 0; transform: scale(.98); } }
+    dialog::backdrop { background: rgb(0 0 0 / .92); }
+  </style>
 </head>
-
-
-    <body id="page-top" class="index">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Anya Belova</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#skills">Skills</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#works">Works</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#story">Story</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#me">Me</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="intro-text">
-                <div class="intro-lead-in">Hi, I am Anya, graphic designer.</div>
-                <div class="intro-heading">LET ME <a href="#skills" class="page-scroll" style="background: #E24400; color: white">DESIGN</a> FOR YOU</div>
-                <!-- <a href="#services" class="page-scroll btn btn-xl">WHAT DO I DO?</a> -->
-            </div>
-        </div>
-    </header>
+<body class="min-h-dvh bg-neutral-950 font-sans text-neutral-300 antialiased selection:bg-neutral-100 selection:text-neutral-950">
 <!--
-        
-          
-        
-          
-        
- -->
+THESIS: A working environment artist's portfolio: the newest render fills the screen, every work opens large. Refuses the 2015 one-page agency template.
+OWN-WORLD: Near-black neutral ground, renders carry all color, Schibsted Grotesk, two sizes, hairline dividers, no cards, no ornament.
+STORY: A recruiter sees current work at full size, scans the rest, opens any piece, finds Instagram.
+FIRST VIEWPORT: Name and role top-left, Instagram top-right, newest render full-width below at natural aspect with its title.
+FORM: Category standard (user chose "standard"), played straight. Seed d8d1d9de.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
 
-    <section id="skills">
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12 text-center">
-      <h2 class="section-heading">SKILLS</h2>
-      <h3 class="section-subheading text-muted">I am not offering a full range of design services... yet. But working on it!</h3>
+  <header class="mx-auto flex max-w-screen-2xl items-baseline justify-between gap-6 px-5 pt-6 pb-8 sm:px-8 sm:pt-8">
+    <div>
+      <h1 class="text-2xl font-semibold tracking-tight text-neutral-50">Anya Belova</h1>
+      <p class="text-sm text-neutral-400">Game &amp; 3D environment artist</p>
     </div>
-  </div>
-  <div class="row text-center">
-    <div class="col-md-4">
-      <span class="fa-stack fa-4x">
-        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-      </span>
-      <h4 class="service-heading">Calligraphy / Lettering</h4>
-      <p class="text-muted">
-      I am sharpening my pencils and skills fascinated with neat tidy lettering.
-      Studying Chinese in school also helps. We are writing hieroglyphs in class.
-      </p>
-    </div>
-    <div class="col-md-4">
-      <span class="fa-stack fa-4x">
-        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-        <i class="fa fa-paint-brush fa-stack-1x fa-inverse"></i>
-      </span>
-      <h4 class="service-heading">Painting / Drawing</h4>
-      <p class="text-muted">
-      I want to be an Artist. That is why I am practicing every day with brushes, colors and pens.
-      </p>
-    </div>
-    <div class="col-md-4">
-      <span class="fa-stack fa-4x">
-        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-        <i class="fa fa-home fa-stack-1x fa-inverse"></i>
-      </span>
-      <h4 class="service-heading">Interior Design</h4>
-      <p class="text-muted">
-      Having taste in furniture I like to design spaces. From living rooms to offices and beyond.
-      </p>
-    </div>
-  </div>
-</div>
-</section>
+    <a href="https://www.instagram.com/anyabeloved_/" class="rounded-sm text-sm text-neutral-300 underline decoration-neutral-600 underline-offset-4 transition-colors hover:text-neutral-50 hover:decoration-neutral-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">Instagram</a>
+  </header>
 
-    <!-- Portfolio Grid Section -->
-<section id="works" class="portfolio bg-light-gray">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">WORKS</h2>
-                <h3 class="section-subheading text-muted">Some things that turned out better than the others</h3>
-            </div>
-        </div>
-        <div class="row">
-        
-{% for work in site.data.works %}
-    <div class="col-md-4 col-sm-6 portfolio-item">
-        <a href="#portfolio-{{ forloop.index }}" class="portfolio-link" data-toggle="modal">
-            <div class="portfolio-hover">
-                <div class="portfolio-hover-content">
-                    <i class="fa fa-plus fa-3x"></i>
-                </div>
-            </div>
-            <img src="/img/portfolio/{{ work.img }}" class="img-responsive" alt="{{ work.title }}">
-        </a>
-    </div>
-{% endfor %}
-        </div>
-    </div>
-</section>
-
-    <!-- About Section -->
-<section id="story">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Story</h2>
-        <h3 class="section-subheading text-muted">
-          My story has not even started yet, but still.
-        </h3>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <ul class="timeline">
-          <li>
-            <div class="timeline-image">
-              <img class="img-circle img-responsive" src="/img/about/1.jpg" alt="">
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4>November 2003</h4>
-                <h4 class="subheading">Humble Beginning</h4>
-              </div>
-              <div class="timeline-body">
-                <p class="text-muted">
-                Don't think I was able to design back then. I mean, first one have to learn how to walk, right?
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-inverted">
-            <div class="timeline-image">
-              <img class="img-circle img-responsive" src="/img/about/2.jpg" alt="">
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4>August 2009</h4>
-                <h4 class="subheading">Art School</h4>
-              </div>
-              <div class="timeline-body">
-                <p class="text-muted">
-                After moving to Thailand I was going to after-school art classes.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="timeline-image">
-              <img class="img-circle img-responsive" src="/img/about/3.jpg" alt="">
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4>May 2013</h4>
-                <h4 class="subheading">Getting the hang of it</h4>
-              </div>
-              <div class="timeline-body">
-                <p class="text-muted">
-                My little sister was born and I started practicing every week at the <a href="http://headstartphuket.com">school</a>.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-inverted">
-            <div class="timeline-image">
-              <img class="img-circle img-responsive" src="/img/about/4.jpg" alt="">
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4>November 2015</h4>
-                <h4 class="subheading">Expansion</h4>
-              </div>
-              <div class="timeline-body">
-                <p class="text-muted">
-                My <a href="http://firedev.com">dad</a> made me this website for my birthday. Keeping fingers crossed.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-inverted">
-            <div class="timeline-image">
-              <h4>
-                <i class="fa fa-heart"></i>
-                <br>
-                Coming
-                <br>
-                soon
-              </h4>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- Team Section -->
-<section id="me" class="bg-light-gray">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3 col-sm-offset-1">
-        <div class="team-member">
-          <img src="/img/team/anya.jpg" class="img-responsive img-circle" alt="">
-        </div>
-      </div>
-      <div class="col-lg-6 col-xs-offset-1">
-        <h2 class="section-heading">ANYA BELOVA</h2>
-        <h3 class="text-muted">Graphic Artist / Interior Designer</h3>
-        <p class="large text-muted">
-        I post occasional updates on Instagram, follow me if you dare.
-        </p>
-        <ul class="list-inline social-buttons">
-          
-          <li class="text-center">
-            <a href="http://twitter.com/anya_io"><i class="fa fa-twitter"></i></a>
-          </li>
-          
-          <li class="text-center">
-            <a href="http://bitbucket.org/anya_phuket"><i class="fa fa-instagram"></i></a>
-          </li>
-          
-          <li class="text-center">
-            <a href="http://github.com/anyaio"><i class="fa fa-github"></i></a>
-          </li>
-          
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- Clients Aside -->
-<aside class="clients">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">&nbsp;</div>
-            <div class="col-md-3 col-sm-6">
-                <a href="http://firedev.com">
-                    <img src="/img/logos/firedev.png" class="img-responsive img-centered" alt="Firedev">
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="http://molokophuket.com">
-                    <img src="/img/logos/moloko.png" class="img-responsive img-centered" alt="Moloko Phuket">
-                </a>
-            </div>
-            <div class="col-md-3">&nbsp;</div>
-        </div>
-    </div>
-</aside>
-
-    <section id="contact">
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12 text-center">
-      <h2 class="section-heading">
-        <a href="mailto:anya@anya.io">
-          Email Me
-        </a>
-      </h2>
-      <h3 class="section-subheading text-muted">
-        Let me create some designs for you.
-      </h3>
-    </div>
-  </div>
-</div>
-</section>
-
-    <!-- Portfolio Modals -->
-
-{% for work in site.data.works %}
-<div class="portfolio-modal modal fade"  id="portfolio-{{ forloop.index }}" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-content" data-dismiss="modal">
-    <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl">
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="modal-body">
-            <h2>{{ work.title }}</h2>
-            <hr class="star-primary">
-            <img src="/img/portfolio/{{ work.img }}" class="img-responsive img-centered" alt="{{ work.title }}">
-            <h3 class="section-subheading text-muted">
-              {{ work.description }}
-            </h3>
-            <ul class="list-inline item-details">
-              <li><strong>{{ work.date }}</strong></li>
-              <li><strong>{{ work.category }}</strong></li>
-            </ul>
+  <main class="mx-auto max-w-screen-2xl px-5 sm:px-8">
+    <h2 class="sr-only">Work</h2>
+    <ul class="grid gap-x-6 gap-y-12 md:grid-cols-2">
+      {% for work in site.data.works %}
+      <li class="{% if forloop.first %}md:col-span-2{% endif %}">
+        <button type="button" data-open="w{{ forloop.index }}" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
+          <img src="/img/portfolio/{{ work.img }}" alt="{{ work.title }}" {% unless forloop.first %}loading="lazy"{% endunless %}
+               class="w-full bg-neutral-900 {% if forloop.first %}max-h-[78vh] object-cover{% else %}aspect-[16/10] object-cover{% endif %} transition-[filter] duration-500 group-hover:brightness-110">
+          <span class="mt-3 flex items-baseline justify-between gap-4 text-sm">
+            <span class="font-medium text-neutral-100">{{ work.title }}</span>
+            <span class="shrink-0 text-neutral-400">{{ work.category }} · {{ work.date }}</span>
+          </span>
+        </button>
+        <dialog id="w{{ forloop.index }}" aria-label="{{ work.title }}" class="m-auto max-h-dvh max-w-none bg-transparent p-4 text-neutral-300 sm:p-8">
+          <img src="/img/portfolio/{{ work.img }}" alt="{{ work.title }}" loading="lazy" class="mx-auto max-h-[82dvh] w-auto max-w-full object-contain">
+          <div class="mx-auto mt-4 flex max-w-5xl flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-sm">
+            <p><span class="font-medium text-neutral-50">{{ work.title }}</span> <span class="text-neutral-400">— {{ work.description }}</span></p>
+            <p class="text-neutral-400">{{ work.category }} · {{ work.date }}</p>
           </div>
-        </div>
+          <form method="dialog" class="fixed top-4 right-4 sm:top-6 sm:right-6">
+            <button class="grid size-10 place-items-center rounded-full text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-neutral-100" aria-label="Close">
+              <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+          </form>
+        </dialog>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <section aria-labelledby="early" class="mt-28 border-t border-neutral-800 pt-8 pb-16">
+      <div class="flex items-baseline justify-between gap-4">
+        <h2 id="early" class="text-2xl font-semibold tracking-tight text-neutral-50">Early work</h2>
+        <p class="text-sm text-neutral-400">2015</p>
       </div>
-    </div>
-  </div>
-</div>
-{% endfor %}
+      <ul class="mt-6 grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-8">
+        {% for work in site.data.early %}
+        <li>
+          <button type="button" data-open="e{{ forloop.index }}" class="group block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-100">
+            <img src="/img/portfolio/{{ work.img }}" alt="{{ work.title }}, {{ work.category | downcase }}, {{ work.date }}" loading="lazy"
+                 class="aspect-square w-full bg-neutral-900 object-cover opacity-80 grayscale-[35%] transition duration-500 group-hover:opacity-100 group-hover:grayscale-0">
+          </button>
+          <dialog id="e{{ forloop.index }}" aria-label="{{ work.title }}" class="m-auto max-h-dvh max-w-none bg-transparent p-4 text-neutral-300 sm:p-8">
+            <img src="/img/portfolio/{{ work.img }}" alt="{{ work.title }}" loading="lazy" class="mx-auto max-h-[82dvh] w-auto max-w-full object-contain">
+            <p class="mt-4 text-center text-sm"><span class="font-medium text-neutral-50">{{ work.title }}</span> <span class="text-neutral-400">· {{ work.category }} · {{ work.date }}</span></p>
+            <form method="dialog" class="fixed top-4 right-4 sm:top-6 sm:right-6">
+              <button class="grid size-10 place-items-center rounded-full text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-neutral-100" aria-label="Close">
+                <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+              </button>
+            </form>
+          </dialog>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
 
-    <!-- jQuery Version 1.11.0 -->
-<script src="/js/jquery-1.11.0.js"></script>
+  <footer class="mx-auto flex max-w-screen-2xl justify-between gap-4 border-t border-neutral-800 px-5 py-8 text-sm text-neutral-400 sm:px-8">
+    <p>© {{ site.time | date: "%Y" }} Anya Belova</p>
+    <a href="https://www.instagram.com/anyabeloved_/" class="hover:text-neutral-50">@anyabeloved_</a>
+  </footer>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js"></script>
-
-<!-- Plugin JavaScript -->
-<script src="/js/jquery.easing.min.js"></script>
-<script src="/js/classie.js"></script>
-<script src="/js/cbpAnimatedHeader.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="/js/agency.js"></script>
-
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-69016906-2', 'auto');
-ga('send', 'pageview');
-
-</script>
-
-
-    </body>
+  <script>
+    // Open a work's dialog; clicking outside the image closes it.
+    document.addEventListener('click', e => {
+      const open = e.target.closest('[data-open]')
+      if (open) return document.getElementById(open.dataset.open).showModal()
+      if (e.target.tagName === 'DIALOG') e.target.close()
+    })
+  </script>
+</body>
 </html>

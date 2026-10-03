@@ -23,7 +23,7 @@ Everything is done in the browser on github.com. Nothing to install.
 3. **Commit changes**. In a minute the work shows up on https://anya.io
 
 To edit or remove a work, change or delete its block in the same file.
-Page text (skills, story, contacts) is in `_layouts/default.html`.
+Name, role and the Instagram link are in `_layouts/default.html`. The 2015 archive is `_data/early.yml`.
 
 ## Something broke
 
