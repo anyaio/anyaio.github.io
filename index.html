@@ -267,6 +267,39 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       
     </section>
     
+
+    
+    <section data-project aria-labelledby="models" class="mt-24 border-t border-neutral-800 pt-12 pb-8 sm:mt-28">
+      <h2 id="models" class="text-2xl font-semibold tracking-tight text-neutral-50">3D Models</h2>
+      <ul class="mt-6 grid max-w-3xl grid-cols-3 gap-2 sm:gap-4">
+        
+        <li>
+          <button type="button" data-full="/img/portfolio/bathroom.jpg" data-title="Bathroom" data-meta="3D Models" aria-label="Open Bathroom" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
+            <img src="/img/portfolio/bathroom.jpg" alt="" loading="lazy"
+                 class="aspect-square w-full bg-neutral-900 object-cover transition-[filter] duration-500 group-hover:brightness-110">
+            <span class="mt-2 block text-sm text-neutral-100">Bathroom</span>
+          </button>
+        </li>
+        
+        <li>
+          <button type="button" data-full="/img/portfolio/blue-crystal.jpg" data-title="Blue Crystal" data-meta="3D Models" aria-label="Open Blue Crystal" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
+            <img src="/img/portfolio/blue-crystal.jpg" alt="" loading="lazy"
+                 class="aspect-square w-full bg-neutral-900 object-cover transition-[filter] duration-500 group-hover:brightness-110">
+            <span class="mt-2 block text-sm text-neutral-100">Blue Crystal</span>
+          </button>
+        </li>
+        
+        <li>
+          <button type="button" data-full="/img/portfolio/bolgarka.jpg" data-title="Bolgarka" data-meta="3D Models" aria-label="Open Bolgarka" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
+            <img src="/img/portfolio/bolgarka.jpg" alt="" loading="lazy"
+                 class="aspect-square w-full bg-neutral-900 object-cover transition-[filter] duration-500 group-hover:brightness-110">
+            <span class="mt-2 block text-sm text-neutral-100">Bolgarka</span>
+          </button>
+        </li>
+        
+      </ul>
+    </section>
+    
   </main>
 
   <dialog id="lightbox" aria-label="Image viewer" class="m-auto max-h-dvh max-w-none bg-transparent p-4 text-neutral-300 sm:p-8">
@@ -374,9 +407,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       at = (i + items.length) % items.length
       const { full, title, desc, meta } = items[at].dataset
       part('img').src = full
-      part('img').alt = `${title}, ${desc}`
+      part('img').alt = desc ? `${title}, ${desc}` : title
       part('title').textContent = title
-      part('desc').textContent = `— ${desc}`
+      part('desc').textContent = desc ? `— ${desc}` : ''
       part('meta').textContent = meta
       part('count').textContent = `${at + 1} / ${items.length}`
     }
