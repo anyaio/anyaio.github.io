@@ -86,6 +86,23 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       {% endif %}
     </section>
     {% endfor %}
+
+    {% if site.data.models %}
+    <section data-project aria-labelledby="models" class="mt-24 border-t border-neutral-800 pt-12 pb-8 sm:mt-28">
+      <h2 id="models" class="text-2xl font-semibold tracking-tight text-neutral-50">3D Models</h2>
+      <ul class="mt-6 grid max-w-3xl grid-cols-3 gap-2 sm:gap-4">
+        {% for model in site.data.models %}
+        <li>
+          <button type="button" data-full="/img/portfolio/{{ model.img }}" data-title="{{ model.title }}" data-meta="3D Models" aria-label="Open {{ model.title }}" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
+            <img src="/img/portfolio/{{ model.img }}" alt="" loading="lazy"
+                 class="aspect-[4/3] w-full bg-neutral-900 object-contain transition-[filter] duration-500 group-hover:brightness-110">
+            <span class="mt-2 block text-sm text-neutral-100">{{ model.title }}</span>
+          </button>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
   </main>
 
   <dialog id="lightbox" aria-label="Image viewer" class="m-auto max-h-dvh max-w-none bg-transparent p-4 text-neutral-300 sm:p-8">
@@ -193,9 +210,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       at = (i + items.length) % items.length
       const { full, title, desc, meta } = items[at].dataset
       part('img').src = full
-      part('img').alt = `${title}, ${desc}`
+      part('img').alt = desc ? `${title}, ${desc}` : title
       part('title').textContent = title
-      part('desc').textContent = `— ${desc}`
+      part('desc').textContent = desc ? `— ${desc}` : ''
       part('meta').textContent = meta
       part('count').textContent = `${at + 1} / ${items.length}`
     }

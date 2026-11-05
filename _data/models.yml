@@ -1,0 +1,11 @@
+# Small images in the 3D Models section at the bottom of the page.
+# To add one: upload the picture, copy two lines, change them.
+
+- title: Bathroom
+  img: bathroom.jpg
+
+- title: Blue Crystal
+  img: blue-crystal.jpg
+
+- title: Bolgarka
+  img: bolgarka.jpg

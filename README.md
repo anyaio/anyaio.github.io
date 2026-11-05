@@ -25,6 +25,10 @@ In the same file, copy a whole block (from `- title` to its last slide) and chan
 `img` is the big main image; the order of blocks is the order on the page.
 `slides` is optional. An optional `link` adds a "Play the game" link under the title; games live in `games/`.
 
+## Add a 3D model
+
+The small images at the bottom of the page are in `_data/models.yml`. Upload the picture as above, then copy two lines and change them.
+
 To edit or remove anything, change or delete its lines in the same file.
 Name, role and the Instagram link are in `_layouts/default.html`.
 
