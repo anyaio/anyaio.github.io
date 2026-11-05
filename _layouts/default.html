@@ -54,6 +54,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <h2 id="p{{ forloop.index }}" class="text-2xl font-semibold tracking-tight text-neutral-50">{{ work.title }}</h2>
         <p class="text-sm text-neutral-400">{{ work.category }} · {{ work.date }}</p>
       </div>
+      {% if work.link %}
+      <p class="mt-3 text-sm"><a href="{{ work.link }}" class="rounded-sm text-neutral-300 underline decoration-neutral-600 underline-offset-4 transition-colors hover:text-neutral-50 hover:decoration-neutral-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">Play the game</a></p>
+      {% endif %}
 
       {% if work.slides %}
       <div data-slideshow role="group" aria-roledescription="carousel" aria-label="{{ work.title }} images" class="mt-10">

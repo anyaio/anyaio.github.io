@@ -23,6 +23,7 @@ Everything is done in the browser on github.com. Nothing to install.
 
 In the same file, copy a whole block (from `- title` to its last slide) and change it.
 `img` is the big main image; the order of blocks is the order on the page.
+`slides` is optional. An optional `link` adds a "Play the game" link under the title; games live in `games/`.
 
 To edit or remove anything, change or delete its lines in the same file.
 Name, role and the Instagram link are in `_layouts/default.html`.

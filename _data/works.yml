@@ -51,3 +51,10 @@
       description: Gameplay screenshot, among the slabs
     - img: doomsday-7.jpg
       description: Gameplay screenshot, lit corridor
+
+- title: mr.stickbug
+  img: mr-stickbug-1.jpg
+  date: Oct 27, 2026
+  category: 2D Platformer
+  description: Browser game, get the acorn to its customer
+  link: /games/mr-stickbug.html
