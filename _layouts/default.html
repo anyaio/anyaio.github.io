@@ -27,10 +27,10 @@
 </head>
 <body class="min-h-dvh bg-neutral-950 font-sans text-neutral-300 antialiased selection:bg-neutral-100 selection:text-neutral-950">
 <!--
-THESIS: A working environment artist's portfolio: the newest render fills the screen, every work opens large. Refuses the 2015 one-page agency template.
+THESIS: A working environment artist's portfolio: each project opens on one big image, the rest flick past below it. Refuses the 2015 one-page agency template.
 OWN-WORLD: Near-black neutral ground, renders carry all color, Schibsted Grotesk, two sizes, hairline dividers, no cards, no ornament.
-STORY: A recruiter sees current work at full size, scans the rest, opens any piece, finds Instagram.
-FIRST VIEWPORT: Name and role top-left, Instagram top-right, newest render full-width below at natural aspect with its title.
+STORY: A recruiter sees current work at full size, flicks through a project, opens any piece, finds Instagram.
+FIRST VIEWPORT: Name and role top-left, Instagram top-right, the first project's main image full-width below with its title.
 FORM: Category standard (user chose "standard"), played straight. Seed d8d1d9de.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
 -->
@@ -44,72 +44,181 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   </header>
 
   <main class="mx-auto max-w-screen-2xl px-5 sm:px-8">
-    <h2 class="sr-only">Work</h2>
-    <ul class="grid gap-x-6 gap-y-12 md:grid-cols-2">
-      {% for work in site.data.works %}
-      <li class="{% if forloop.first %}md:col-span-2{% endif %}">
-        <button type="button" data-open="w{{ forloop.index }}" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
-          <img src="/img/portfolio/{{ work.img }}" alt="" {% unless forloop.first %}loading="lazy"{% endunless %}
-               class="w-full bg-neutral-900 {% if forloop.first %}max-h-[85vh] object-cover{% else %}aspect-[16/10] object-cover{% endif %} transition-[filter] duration-500 group-hover:brightness-110">
-          <span class="mt-3 flex items-baseline justify-between gap-4 text-sm">
-            <span class="font-medium text-neutral-100">{{ work.title }}</span>
-            <span class="shrink-0 text-neutral-400">{{ work.category }} · {{ work.date }}</span>
-          </span>
-        </button>
-        <dialog id="w{{ forloop.index }}" aria-label="{{ work.title }}" class="m-auto max-h-dvh max-w-none bg-transparent p-4 text-neutral-300 sm:p-8">
-          <img src="/img/portfolio/{{ work.img }}" alt="{{ work.title }}" loading="lazy" class="mx-auto max-h-[82dvh] w-auto max-w-full object-contain">
-          <div class="mx-auto mt-4 flex max-w-5xl flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-sm">
-            <p><span class="font-medium text-neutral-50">{{ work.title }}</span> <span class="text-neutral-400">— {{ work.description }}</span></p>
-            <p class="text-neutral-400">{{ work.category }} · {{ work.date }}</p>
-          </div>
-          <form method="dialog" class="fixed top-4 right-4 sm:top-6 sm:right-6">
-            <button class="grid size-10 place-items-center rounded-full text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-neutral-100" aria-label="Close">
-              <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-            </button>
-          </form>
-        </dialog>
-      </li>
-      {% endfor %}
-    </ul>
-
-    <section aria-labelledby="early" class="mt-28 border-t border-neutral-800 pt-8 pb-16">
-      <div class="flex items-baseline justify-between gap-4">
-        <h2 id="early" class="text-2xl font-semibold tracking-tight text-neutral-50">Early work</h2>
-        <p class="text-sm text-neutral-400">2015</p>
+    {% for work in site.data.works %}
+    <section data-project aria-labelledby="p{{ forloop.index }}" class="{% unless forloop.first %}mt-24 border-t border-neutral-800 pt-12 sm:mt-28{% endunless %} pb-8">
+      <button type="button" data-full="/img/portfolio/{{ work.img }}" data-title="{{ work.title }}" data-desc="{{ work.description }}" data-meta="{{ work.category }} · {{ work.date }}" aria-label="Open {{ work.title }}, {{ work.description }}" class="group block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
+        <img src="/img/portfolio/{{ work.img }}" alt="" {% unless forloop.first %}loading="lazy"{% endunless %}
+             class="max-h-[85vh] w-full bg-neutral-900 object-cover transition-[filter] duration-500 group-hover:brightness-110">
+      </button>
+      <div class="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+        <h2 id="p{{ forloop.index }}" class="text-2xl font-semibold tracking-tight text-neutral-50">{{ work.title }}</h2>
+        <p class="text-sm text-neutral-400">{{ work.category }} · {{ work.date }}</p>
       </div>
-      <ul class="mt-6 grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-8">
-        {% for work in site.data.early %}
-        <li>
-          <button type="button" data-open="e{{ forloop.index }}" class="group block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-100">
-            <img src="/img/portfolio/{{ work.img }}" alt="{{ work.title }}, {{ work.category | downcase }}, {{ work.date }}" loading="lazy"
-                 class="aspect-square w-full bg-neutral-900 object-cover opacity-80 grayscale-[35%] transition duration-500 group-hover:opacity-100 group-hover:grayscale-0">
-          </button>
-          <dialog id="e{{ forloop.index }}" aria-label="{{ work.title }}" class="m-auto max-h-dvh max-w-none bg-transparent p-4 text-neutral-300 sm:p-8">
-            <img src="/img/portfolio/{{ work.img }}" alt="{{ work.title }}" loading="lazy" class="mx-auto max-h-[82dvh] w-auto max-w-full object-contain">
-            <p class="mt-4 text-center text-sm"><span class="font-medium text-neutral-50">{{ work.title }}</span> <span class="text-neutral-400">· {{ work.category }} · {{ work.date }}</span></p>
-            <form method="dialog" class="fixed top-4 right-4 sm:top-6 sm:right-6">
-              <button class="grid size-10 place-items-center rounded-full text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-neutral-100" aria-label="Close">
-                <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-              </button>
-            </form>
-          </dialog>
-        </li>
-        {% endfor %}
-      </ul>
+
+      {% if work.slides %}
+      <div data-slideshow role="group" aria-roledescription="carousel" aria-label="{{ work.title }} images" class="mt-10">
+        <ul data-slides tabindex="0" aria-label="Slides, use the arrow keys to move" class="relative flex cursor-grab touch-pan-x touch-pan-y snap-x snap-mandatory gap-4 overflow-x-auto [scrollbar-width:none] select-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100 sm:gap-6">
+          {% for slide in work.slides %}
+          <li class="w-[88%] shrink-0 snap-start last:snap-end md:w-[62%]">
+            <button type="button" data-full="/img/portfolio/{{ slide.img }}" data-title="{{ work.title }}" data-desc="{{ slide.description }}" data-meta="{{ work.category }} · {{ work.date }}" aria-label="Open {{ slide.description }}" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-neutral-100">
+              <img src="/img/portfolio/{{ slide.img }}" alt="" loading="lazy" draggable="false"
+                   class="aspect-video w-full bg-neutral-900 object-cover transition-[filter] duration-500 group-hover:brightness-110">
+              <span class="mt-3 block text-sm text-neutral-400">{{ slide.description }}</span>
+            </button>
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="mt-4 flex items-center justify-between gap-4 text-sm text-neutral-400">
+          <p data-count aria-live="polite" class="tabular-nums">1 / {{ work.slides | size }}</p>
+          <div class="flex gap-2">
+            <button type="button" data-prev aria-label="Previous image" class="grid size-10 place-items-center rounded-full text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-neutral-100 disabled:pointer-events-none disabled:opacity-30">
+              <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button type="button" data-next aria-label="Next image" class="grid size-10 place-items-center rounded-full text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-neutral-100 disabled:pointer-events-none disabled:opacity-30">
+              <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      {% endif %}
     </section>
+    {% endfor %}
   </main>
 
-  <footer class="mx-auto flex max-w-screen-2xl justify-between gap-4 border-t border-neutral-800 px-5 py-8 text-sm text-neutral-400 sm:px-8">
+  <dialog id="lightbox" aria-label="Image viewer" class="m-auto max-h-dvh max-w-none bg-transparent p-4 text-neutral-300 sm:p-8">
+    <img data-lb-img alt="" draggable="false" class="mx-auto max-h-[82dvh] w-auto max-w-full touch-pan-y object-contain">
+    <div class="mx-auto mt-4 flex max-w-5xl flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-sm">
+      <p><span data-lb-title class="font-medium text-neutral-50"></span> <span data-lb-desc class="text-neutral-400"></span></p>
+      <p class="text-neutral-400"><span data-lb-meta></span> · <span data-lb-count class="tabular-nums"></span></p>
+    </div>
+    <button type="button" data-lb-prev aria-label="Previous image" class="fixed top-1/2 left-2 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-neutral-950/60 text-neutral-200 transition-colors hover:bg-neutral-800 hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-neutral-100 sm:left-4">
+      <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button type="button" data-lb-next aria-label="Next image" class="fixed top-1/2 right-2 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-neutral-950/60 text-neutral-200 transition-colors hover:bg-neutral-800 hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-neutral-100 sm:right-4">
+      <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <form method="dialog" class="fixed top-4 right-4 sm:top-6 sm:right-6">
+      <button class="grid size-10 place-items-center rounded-full text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-neutral-100" aria-label="Close">
+        <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </form>
+  </dialog>
+
+  <footer class="mx-auto mt-16 flex max-w-screen-2xl justify-between gap-4 border-t border-neutral-800 px-5 py-8 text-sm text-neutral-400 sm:px-8">
     <p>© {{ site.time | date: "%Y" }} Anya Belova</p>
     <a href="https://www.instagram.com/anyabeloved_/" class="rounded-sm hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">@anyabeloved_</a>
   </footer>
 
   <script>
-    // Open a work's dialog; clicking outside the image closes it.
+    const smooth = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+    const clamp = (n, max) => Math.max(0, Math.min(n, max))
+
+    // Slideshows: touch and trackpad scroll natively, a mouse can drag, arrows and keys step.
+    document.querySelectorAll('[data-slideshow]').forEach(show => {
+      const list = show.querySelector('[data-slides]')
+      const slides = [...list.children]
+      const last = slides.length - 1
+      const prev = show.querySelector('[data-prev]')
+      const next = show.querySelector('[data-next]')
+      const count = show.querySelector('[data-count]')
+
+      const current = () => {
+        // The last slide can't reach the left edge, so the end of the scroll counts as last.
+        if (list.scrollLeft >= list.scrollWidth - list.clientWidth - 2) return last
+        let best = 0
+        slides.forEach((s, i) => {
+          if (Math.abs(s.offsetLeft - list.scrollLeft) < Math.abs(slides[best].offsetLeft - list.scrollLeft)) best = i
+        })
+        return best
+      }
+      const go = i => list.scrollTo({ left: slides[clamp(i, last)].offsetLeft, behavior: smooth })
+      const update = () => {
+        const i = current()
+        count.textContent = `${i + 1} / ${slides.length}`
+        prev.disabled = i === 0
+        next.disabled = i === last
+      }
+
+      prev.addEventListener('click', () => go(current() - 1))
+      next.addEventListener('click', () => go(current() + 1))
+      list.addEventListener('scroll', update, { passive: true })
+      list.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); go(current() - 1) }
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(current() + 1) }
+      })
+      update()
+
+      // Mouse drag to flick. Snap is off during the drag so the slides follow the pointer.
+      let drag = null
+      let justDragged = false
+      list.addEventListener('pointerdown', e => {
+        if (e.pointerType === 'mouse' && e.button === 0) drag = { x: e.clientX, left: list.scrollLeft, from: current(), moved: false }
+      })
+      addEventListener('pointermove', e => {
+        if (!drag) return
+        const dx = e.clientX - drag.x
+        if (!drag.moved && Math.abs(dx) < 6) return
+        drag.moved = true
+        list.style.scrollSnapType = 'none'
+        list.style.cursor = 'grabbing'
+        list.scrollLeft = drag.left - dx
+      })
+      addEventListener('pointerup', e => {
+        if (!drag) return
+        const { moved, x, from } = drag
+        drag = null
+        if (!moved) return
+        list.style.cursor = ''
+        const dx = e.clientX - x
+        go(Math.abs(dx) > 40 ? from - Math.sign(dx) : from)
+        setTimeout(() => { list.style.scrollSnapType = '' }, 450)
+        justDragged = true
+        setTimeout(() => { justDragged = false }, 50)
+      })
+      // A drag ends in a click on the slide under the pointer: don't open it.
+      list.addEventListener('click', e => {
+        if (justDragged) { e.stopPropagation(); e.preventDefault() }
+      }, { capture: true })
+    })
+
+    // Lightbox: opens any image large and steps through its project.
+    const box = document.getElementById('lightbox')
+    const part = name => box.querySelector(`[data-lb-${name}]`)
+    let items = []
+    let at = 0
+    const show = i => {
+      at = (i + items.length) % items.length
+      const { full, title, desc, meta } = items[at].dataset
+      part('img').src = full
+      part('img').alt = `${title}, ${desc}`
+      part('title').textContent = title
+      part('desc').textContent = `— ${desc}`
+      part('meta').textContent = meta
+      part('count').textContent = `${at + 1} / ${items.length}`
+    }
     document.addEventListener('click', e => {
-      const open = e.target.closest('[data-open]')
-      if (open) return document.getElementById(open.dataset.open).showModal()
-      if (e.target.tagName === 'DIALOG') e.target.close()
+      const open = e.target.closest('[data-full]')
+      if (open) {
+        items = [...open.closest('[data-project]').querySelectorAll('[data-full]')]
+        show(items.indexOf(open))
+        return box.showModal()
+      }
+      if (e.target === box) box.close() // click outside the image closes it
+    })
+    part('prev').addEventListener('click', () => show(at - 1))
+    part('next').addEventListener('click', () => show(at + 1))
+    box.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') show(at - 1)
+      if (e.key === 'ArrowRight') show(at + 1)
+    })
+    // Swipe on the open image.
+    let touchX = null
+    part('img').addEventListener('pointerdown', e => { touchX = e.clientX })
+    part('img').addEventListener('pointerup', e => {
+      if (touchX === null) return
+      const dx = e.clientX - touchX
+      touchX = null
+      if (Math.abs(dx) > 40) show(at - Math.sign(dx))
     })
   </script>
 </body>

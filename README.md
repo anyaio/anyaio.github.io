@@ -4,31 +4,33 @@ Anya's portfolio: https://anya.io
 
 Everything is done in the browser on github.com. Nothing to install.
 
-## Add a work
+## Add a picture to a slideshow
 
 1. Open https://github.com/anyaio/anyaio.github.io/tree/source/img/portfolio
    → **Add file → Upload files** → drop the picture → **Commit changes**.
-   Name it in lowercase with dashes, no spaces: `eco-room-4.jpg`.
+   Name it in lowercase with dashes, no spaces: `doomsday-8.jpg`.
 2. Open https://github.com/anyaio/anyaio.github.io/edit/source/_data/works.yml
-   Copy the top block, paste it above, change the text:
+   Under `slides` of the project, copy two lines and change them:
 
    ```yaml
-   - title: Eco Room Level Blockout
-     img: eco-room-4.jpg
-     date: Oct 2, 2026
-     category: 3D
-     description: Work-in-progress render
+       - img: doomsday-8.jpg
+         description: Gameplay screenshot, the tower
    ```
 
-3. **Commit changes**. In a minute the work shows up on https://anya.io
+3. **Commit changes**. In a minute the picture shows up on https://anya.io
 
-To edit or remove a work, change or delete its block in the same file.
-Name, role and the Instagram link are in `_layouts/default.html`. The 2015 archive is `_data/early.yml`.
+## Add a project
+
+In the same file, copy a whole block (from `- title` to its last slide) and change it.
+`img` is the big main image; the order of blocks is the order on the page.
+
+To edit or remove anything, change or delete its lines in the same file.
+Name, role and the Instagram link are in `_layouts/default.html`.
 
 ## Something broke
 
 Open the **Actions** tab. A red cross means the site didn't update: open it, the log names the line to fix.
-In `works.yml`, keep the dash and the two-space indent exactly like the blocks around it.
+In `works.yml`, keep the dashes and the indents exactly like the lines around them.
 
 ## How it works
 
