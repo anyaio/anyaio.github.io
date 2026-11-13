@@ -1,10 +1,13 @@
 # Small images in the 3D Models section at the bottom of the page.
 # To add one: upload the picture, copy two lines, change them.
 # Optional "model" = a .glb file in models/, shown as a 3D model visitors can rotate.
+# Optional "cutout" + "depth" (a transparent picture and its depth map) give a picture a 3D depth effect.
 # Optional "orbit" (start angle, e.g. -40deg 65deg auto) and "exposure" (brightness, 1 = normal).
 
 - title: Bathroom
   img: bathroom.jpg
+  cutout: bathroom-cutout.webp
+  depth: bathroom-depth.webp
 
 - title: Blue Crystal
   img: blue-crystal.jpg

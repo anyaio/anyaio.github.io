@@ -104,8 +104,14 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           <span class="mt-2 block text-sm text-neutral-100">{{ model.title }}</span>
           {% else %}
           <button type="button" data-full="/img/portfolio/{{ model.img }}" data-title="{{ model.title }}" data-meta="3D Models" aria-label="Open {{ model.title }}" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
+            {% if model.depth %}
+            <span data-depth="/img/portfolio/{{ model.depth }}" class="relative block aspect-square w-full">
+              <img src="/img/portfolio/{{ model.cutout }}" alt="" loading="lazy" class="absolute inset-0 h-full w-full object-contain">
+            </span>
+            {% else %}
             <img src="/img/portfolio/{{ model.img }}" alt="" loading="lazy"
                  class="aspect-square w-full bg-neutral-900 object-cover transition-[filter] duration-500 group-hover:brightness-110">
+            {% endif %}
             <span class="mt-2 block text-sm text-neutral-100">{{ model.title }}</span>
           </button>
           {% endif %}
@@ -214,6 +220,76 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       list.addEventListener('click', e => {
         if (justDragged) { e.stopPropagation(); e.preventDefault() }
       }, { capture: true })
+    })
+
+    // Depth parallax: a cut-out picture plus its depth map, drawn with WebGL so near
+    // parts shift more than far ones. Sways by itself; follows the mouse on hover.
+    document.querySelectorAll('[data-depth]').forEach(box => {
+      const still = box.querySelector('img')
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
+      const canvas = document.createElement('canvas')
+      canvas.className = 'absolute inset-0 h-full w-full'
+      const gl = canvas.getContext('webgl', { premultipliedAlpha: true, alpha: true })
+      if (!gl) return // no WebGL: the still picture stays
+      const shader = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s }
+      const prog = gl.createProgram()
+      gl.attachShader(prog, shader(gl.VERTEX_SHADER, 'attribute vec2 p; varying vec2 v; void main(){ v = vec2(p.x * .5 + .5, .5 - p.y * .5); gl_Position = vec4(p, 0., 1.); }'))
+      gl.attachShader(prog, shader(gl.FRAGMENT_SHADER, `precision mediump float; uniform sampler2D img, dep; uniform vec2 off; varying vec2 v;
+        void main(){ vec2 uv = v; for (int i = 0; i < 6; i++) { uv = v + off * (texture2D(dep, uv).r - .45); }
+          gl_FragColor = texture2D(img, uv); }`))
+      gl.linkProgram(prog)
+      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return
+      gl.useProgram(prog)
+      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer())
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW)
+      const loc = gl.getAttribLocation(prog, 'p')
+      gl.enableVertexAttribArray(loc)
+      gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0)
+      gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true)
+      const texture = (unit, image) => {
+        gl.activeTexture(gl.TEXTURE0 + unit)
+        gl.bindTexture(gl.TEXTURE_2D, gl.createTexture())
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image)
+        for (const [k, val] of [[gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE], [gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR]])
+          gl.texParameteri(gl.TEXTURE_2D, k, val)
+      }
+      const offLoc = gl.getUniformLocation(prog, 'off')
+      let target = [0, 0], cur = [0, 0], hover = false, visible = false, running = false, t0 = performance.now()
+      const draw = () => {
+        const size = Math.min(800, Math.round(box.clientWidth * devicePixelRatio))
+        if (canvas.width !== size) { canvas.width = canvas.height = size; gl.viewport(0, 0, size, size) }
+        gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT)
+        gl.uniform2f(offLoc, cur[0], cur[1])
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
+      }
+      const frame = now => {
+        if (!visible) { running = false; return }
+        if (!hover) { const s = (now - t0) / 1000; target = [Math.sin(s * .9) * .022, Math.cos(s * .6) * .010] }
+        cur = cur.map((c, i) => c + (target[i] - c) * .08)
+        draw()
+        requestAnimationFrame(frame)
+      }
+      const load = src => new Promise((ok, fail) => { const i = new Image(); i.onload = () => ok(i); i.onerror = fail; i.src = src })
+      new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting
+        if (!visible) return
+        if (!canvas.isConnected) {
+          Promise.all([load(still.currentSrc || still.src), load(box.dataset.depth)]).then(([img, dep]) => {
+            texture(0, img); texture(1, dep)
+            gl.uniform1i(gl.getUniformLocation(prog, 'img'), 0)
+            gl.uniform1i(gl.getUniformLocation(prog, 'dep'), 1)
+            box.append(canvas); draw(); still.style.opacity = 0
+            if (!reduce && !running) { running = true; requestAnimationFrame(frame) }
+          }).catch(() => {})
+        } else if (!reduce && !running) { running = true; requestAnimationFrame(frame) }
+      }).observe(box)
+      box.addEventListener('pointermove', e => {
+        if (e.pointerType !== 'mouse' || reduce) return
+        const r = box.getBoundingClientRect()
+        hover = true
+        target = [((e.clientX - r.left) / r.width - .5) * -.07, ((e.clientY - r.top) / r.height - .5) * -.05]
+      })
+      box.addEventListener('pointerleave', () => { hover = false; t0 = performance.now() - 1700 })
     })
 
     // Lightbox: opens any image large and steps through its project.

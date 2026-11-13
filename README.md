@@ -29,6 +29,7 @@ In the same file, copy a whole block (from `- title` to its last slide) and chan
 
 The small images at the bottom of the page are in `_data/models.yml`. Upload the picture as above, then copy two lines and change them.
 To make one rotatable in 3D, upload a `.glb` file to `models/` and add `model: <name>.glb` under it; it floats with no background, and the picture is used only where the model is not.
+A picture without a model can get `cutout` (a transparent .webp) and `depth` (its black-to-white depth map) for a 3D depth effect.
 Optional `orbit` sets the starting view (e.g. `-40deg 65deg auto`) and `exposure` the brightness (1 = normal).
 
 To edit or remove anything, change or delete its lines in the same file.
