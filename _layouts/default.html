@@ -95,10 +95,10 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <li>
           {% if model.model %}
           <div class="relative">
-            <model-viewer src="/models/{{ model.model }}" poster="/img/portfolio/{{ model.img }}" alt="{{ model.title }}, 3D model, drag to rotate"
+            <model-viewer src="/models/{{ model.model }}" alt="{{ model.title }}, 3D model, drag to rotate"
                           camera-controls auto-rotate disable-zoom touch-action="pan-y" interaction-prompt="none"
-                          environment-image="neutral" shadow-intensity="0.6" loading="lazy" reveal="auto"
-                          class="block aspect-square h-auto w-full cursor-grab" style="background: linear-gradient(#a6a6a6, #6b6b6b)"></model-viewer>
+                          environment-image="neutral" shadow-intensity="0" loading="lazy" reveal="auto"
+                          class="block aspect-square h-auto w-full cursor-grab bg-transparent" style="--poster-color: transparent"></model-viewer>
             <span class="pointer-events-none absolute top-2 left-2 rounded-full bg-neutral-950/70 px-2 text-sm text-neutral-100">3D</span>
           </div>
           <span class="mt-2 block text-sm text-neutral-100">{{ model.title }}</span>
