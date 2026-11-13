@@ -1,10 +1,12 @@
 # Small images in the 3D Models section at the bottom of the page.
 # To add one: upload the picture, copy two lines, change them.
 # Optional "model" = a .glb file in models/, shown as a 3D model visitors can rotate.
+# Optional "effect: tilt" makes a plain picture sway and tilt like a 3D card (no model needed).
 # Optional "orbit" (start angle, e.g. -40deg 65deg auto) and "exposure" (brightness, 1 = normal).
 
 - title: Bathroom
   img: bathroom.jpg
+  effect: tilt
 
 - title: Blue Crystal
   img: blue-crystal.jpg

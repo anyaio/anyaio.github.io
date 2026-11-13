@@ -23,6 +23,12 @@
     dialog { opacity: 0; transition: opacity .3s cubic-bezier(.16,1,.3,1), overlay .3s allow-discrete, display .3s allow-discrete; }
     @starting-style { dialog[open] { opacity: 0; } }
     dialog::backdrop { background: rgb(0 0 0 / .92); }
+    /* Tilt: a picture that sways like a 3D card and follows the mouse */
+    @keyframes tilt-sway { 0%, 100% { transform: rotateX(5deg) rotateY(-9deg); } 50% { transform: rotateX(-3deg) rotateY(9deg); } }
+    [data-tilt] [data-tilt-card] { animation: tilt-sway 7s ease-in-out infinite; }
+    [data-tilt].is-tilting [data-tilt-card] { animation: none; }
+    [data-tilt-glare] { background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgb(255 255 255 / .28), transparent 60%); }
+    @media (prefers-reduced-motion: reduce) { [data-tilt] [data-tilt-card] { animation: none; } }
   </style>
 </head>
 <body class="min-h-dvh bg-neutral-950 font-sans text-neutral-300 antialiased selection:bg-neutral-100 selection:text-neutral-950">
@@ -104,8 +110,13 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           <span class="mt-2 block text-sm text-neutral-100">{{ model.title }}</span>
           {% else %}
           <button type="button" data-full="/img/portfolio/{{ model.img }}" data-title="{{ model.title }}" data-meta="3D Models" aria-label="Open {{ model.title }}" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
-            <img src="/img/portfolio/{{ model.img }}" alt="" loading="lazy"
-                 class="aspect-square w-full bg-neutral-900 object-cover transition-[filter] duration-500 group-hover:brightness-110">
+            <span {% if model.effect == "tilt" %}data-tilt {% endif %}class="block [perspective:800px]">
+              <span data-tilt-card class="relative block transition-transform duration-300 ease-out [transform-style:preserve-3d]">
+                <img src="/img/portfolio/{{ model.img }}" alt="" loading="lazy"
+                     class="aspect-square w-full bg-neutral-900 object-cover transition-[filter] duration-500 group-hover:brightness-110">
+                {% if model.effect == "tilt" %}<span data-tilt-glare class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300"></span>{% endif %}
+              </span>
+            </span>
             <span class="mt-2 block text-sm text-neutral-100">{{ model.title }}</span>
           </button>
           {% endif %}
@@ -214,6 +225,28 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       list.addEventListener('click', e => {
         if (justDragged) { e.stopPropagation(); e.preventDefault() }
       }, { capture: true })
+    })
+
+    // Tilt cards: follow the mouse; touch screens keep the gentle sway.
+    document.querySelectorAll('[data-tilt]').forEach(el => {
+      const card = el.querySelector('[data-tilt-card]')
+      const glare = el.querySelector('[data-tilt-glare]')
+      el.addEventListener('pointermove', e => {
+        if (e.pointerType !== 'mouse' || matchMedia('(prefers-reduced-motion: reduce)').matches) return
+        const r = el.getBoundingClientRect()
+        const x = (e.clientX - r.left) / r.width
+        const y = (e.clientY - r.top) / r.height
+        el.classList.add('is-tilting')
+        card.style.transform = `rotateX(${(0.5 - y) * 18}deg) rotateY(${(x - 0.5) * 22}deg) scale(1.03)`
+        glare.style.setProperty('--gx', `${x * 100}%`)
+        glare.style.setProperty('--gy', `${y * 100}%`)
+        glare.style.opacity = 1
+      })
+      el.addEventListener('pointerleave', () => {
+        el.classList.remove('is-tilting')
+        card.style.transform = ''
+        glare.style.opacity = 0
+      })
     })
 
     // Lightbox: opens any image large and steps through its project.
