@@ -274,27 +274,36 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <ul class="mt-6 grid max-w-3xl grid-cols-3 gap-2 sm:gap-4">
         
         <li>
+          
           <button type="button" data-full="/img/portfolio/bathroom.jpg" data-title="Bathroom" data-meta="3D Models" aria-label="Open Bathroom" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
             <img src="/img/portfolio/bathroom.jpg" alt="" loading="lazy"
                  class="aspect-square w-full bg-neutral-900 object-cover transition-[filter] duration-500 group-hover:brightness-110">
             <span class="mt-2 block text-sm text-neutral-100">Bathroom</span>
           </button>
+          
         </li>
         
         <li>
-          <button type="button" data-full="/img/portfolio/blue-crystal.jpg" data-title="Blue Crystal" data-meta="3D Models" aria-label="Open Blue Crystal" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
-            <img src="/img/portfolio/blue-crystal.jpg" alt="" loading="lazy"
-                 class="aspect-square w-full bg-neutral-900 object-cover transition-[filter] duration-500 group-hover:brightness-110">
-            <span class="mt-2 block text-sm text-neutral-100">Blue Crystal</span>
-          </button>
+          
+          <div class="relative">
+            <model-viewer src="/models/blue-crystal.glb" poster="/img/portfolio/blue-crystal.jpg" alt="Blue Crystal, 3D model, drag to rotate"
+                          camera-controls auto-rotate disable-zoom touch-action="pan-y" interaction-prompt="none"
+                          environment-image="neutral" shadow-intensity="0.6" loading="lazy" reveal="auto"
+                          class="block aspect-square h-auto w-full cursor-grab" style="background: linear-gradient(#a6a6a6, #6b6b6b)"></model-viewer>
+            <span class="pointer-events-none absolute top-2 left-2 rounded-full bg-neutral-950/70 px-2 text-sm text-neutral-100">3D</span>
+          </div>
+          <span class="mt-2 block text-sm text-neutral-100">Blue Crystal</span>
+          
         </li>
         
         <li>
+          
           <button type="button" data-full="/img/portfolio/bolgarka.jpg" data-title="Bolgarka" data-meta="3D Models" aria-label="Open Bolgarka" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
             <img src="/img/portfolio/bolgarka.jpg" alt="" loading="lazy"
                  class="aspect-square w-full bg-neutral-900 object-cover transition-[filter] duration-500 group-hover:brightness-110">
             <span class="mt-2 block text-sm text-neutral-100">Bolgarka</span>
           </button>
+          
         </li>
         
       </ul>
@@ -326,6 +335,10 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <a href="https://www.instagram.com/anyabeloved_/" class="rounded-sm hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">@anyabeloved_</a>
   </footer>
 
+  
+  
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+  
   <script>
     const smooth = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
     const clamp = (n, max) => Math.max(0, Math.min(n, max))
