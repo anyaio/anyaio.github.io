@@ -93,11 +93,22 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <ul class="mt-6 grid max-w-3xl grid-cols-3 gap-2 sm:gap-4">
         {% for model in site.data.models %}
         <li>
+          {% if model.model %}
+          <div class="relative">
+            <model-viewer src="/models/{{ model.model }}" poster="/img/portfolio/{{ model.img }}" alt="{{ model.title }}, 3D model, drag to rotate"
+                          camera-controls auto-rotate disable-zoom touch-action="pan-y" interaction-prompt="none"
+                          environment-image="neutral" shadow-intensity="0.6" loading="lazy" reveal="auto"
+                          class="block aspect-square h-auto w-full cursor-grab" style="background: linear-gradient(#a6a6a6, #6b6b6b)"></model-viewer>
+            <span class="pointer-events-none absolute top-2 left-2 rounded-full bg-neutral-950/70 px-2 text-sm text-neutral-100">3D</span>
+          </div>
+          <span class="mt-2 block text-sm text-neutral-100">{{ model.title }}</span>
+          {% else %}
           <button type="button" data-full="/img/portfolio/{{ model.img }}" data-title="{{ model.title }}" data-meta="3D Models" aria-label="Open {{ model.title }}" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
             <img src="/img/portfolio/{{ model.img }}" alt="" loading="lazy"
                  class="aspect-square w-full bg-neutral-900 object-cover transition-[filter] duration-500 group-hover:brightness-110">
             <span class="mt-2 block text-sm text-neutral-100">{{ model.title }}</span>
           </button>
+          {% endif %}
         </li>
         {% endfor %}
       </ul>
@@ -129,6 +140,10 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <a href="https://www.instagram.com/anyabeloved_/" class="rounded-sm hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">@anyabeloved_</a>
   </footer>
 
+  {% assign models_3d = site.data.models | map: "model" | compact %}
+  {% if models_3d.size > 0 %}
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+  {% endif %}
   <script>
     const smooth = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
     const clamp = (n, max) => Math.max(0, Math.min(n, max))

@@ -28,6 +28,7 @@ In the same file, copy a whole block (from `- title` to its last slide) and chan
 ## Add a 3D model
 
 The small images at the bottom of the page are in `_data/models.yml`. Upload the picture as above, then copy two lines and change them.
+To make one rotatable in 3D, upload a `.glb` file to `models/` and add `model: <name>.glb` under it; the picture shows while the model loads.
 
 To edit or remove anything, change or delete its lines in the same file.
 Name, role and the Instagram link are in `_layouts/default.html`.
