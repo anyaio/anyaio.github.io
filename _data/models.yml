@@ -1,6 +1,7 @@
 # Small images in the 3D Models section at the bottom of the page.
 # To add one: upload the picture, copy two lines, change them.
 # Optional "model" = a .glb file in models/, shown as a 3D model visitors can rotate.
+# Optional "orbit" (start angle, e.g. -40deg 65deg auto) and "exposure" (brightness, 1 = normal).
 
 - title: Bathroom
   img: bathroom.jpg
@@ -11,3 +12,6 @@
 
 - title: Bolgarka
   img: bolgarka.jpg
+  model: bolgarka.glb
+  orbit: -40deg 65deg auto
+  exposure: 1.3

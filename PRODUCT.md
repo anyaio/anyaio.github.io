@@ -25,7 +25,7 @@ Anya adds a picture by uploading an image to `img/portfolio/` and adding two lin
 ## Capabilities and Constraints
 
 - Projects list: title, img (main image), date, category, description, optional slides (each with img and description), optional link (a playable game in `games/` or an outside page such as Steam) with optional `link_label`. Shown in file order.
-- 3D Models: `_data/models.yml` (title, img, optional model = a GLB in `models/`), small images at the bottom of the page, no dates. Blue Crystal is a rotatable 3D model.
+- 3D Models: `_data/models.yml` (title, img, optional model = a GLB in `models/`), small images at the bottom of the page, no dates. Blue Crystal and Bolgarka are rotatable 3D models.
 - Eco Room and the 2015 "Early work" archive were removed from the site on Anya's request (2026-11-05); they remain in git history.
 - Contact: Instagram https://www.instagram.com/anyabeloved_/ only. Old links (twitter anya_io, instagram anya_phuket, github anyaio) and the 2015 story timeline are retired.
 - Images are JPGs up to 1920px wide; no thumbnails.
