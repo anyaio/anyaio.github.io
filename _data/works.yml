@@ -3,23 +3,21 @@
 # The order here is the order on the page.
 
 - title: Lethal Grace
-  img: lethal-grace-atrium.jpg
+  img: lethal-grace-lounge.jpg
   date: Coming 2027
   category: First-Person Shooter
   description: Antelus Games, first-person action shooter on Steam
   link: https://store.steampowered.com/app/4118480/Lethal_Grace/
   link_label: View on Steam
   slides:
-    - img: lethal-grace-1.jpg
-      description: Gameplay screenshot, garden under the light ceiling
-    - img: lethal-grace-2.jpg
-      description: Gameplay screenshot, palms and steel beams
-    - img: lethal-grace-3.jpg
-      description: Gameplay screenshot, misty jungle hall
-    - img: lethal-grace-4.jpg
-      description: Gameplay screenshot, glass atrium in fog
-    - img: lethal-grace-5.jpg
-      description: Gameplay screenshot, along the glass wall
+    - img: lethal-grace-control-room.jpg
+      description: Control room with security screens
+    - img: lethal-grace-office.jpg
+      description: Office floor, first aid pickup
+    - img: lethal-grace-neon.jpg
+      description: Neon signs above the street
+    - img: lethal-grace-grace.jpg
+      description: Grace, the android assassin
 
 - title: Aquarium Level
   img: aquarium-canal.jpg

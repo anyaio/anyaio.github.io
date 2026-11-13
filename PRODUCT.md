@@ -36,7 +36,7 @@ Name: Anya Belova. Domain anya.io. The 2015 voice ("let me design for you", "my 
 
 ## Evidence on Hand
 
-- Current work: `lethal-grace-*.jpg` (Lethal Grace, Antelus Games, first-person shooter on Steam, coming 2027); `img/portfolio/aquarium-*.jpg` (Aquarium Level, Sep 2026) and `doomsday-*.jpg` (Doomsday Level Blockout, Aug 2026), Level Design; `mr-stickbug-1.jpg` and `games/mr-stickbug.html` (mr.stickbug, 2D Platformer, Oct 2026).
+- Current work: `lethal-grace-*.jpg` (Lethal Grace, Antelus Games, first-person shooter on Steam, coming 2027; official Steam screenshots); `img/portfolio/aquarium-*.jpg` (Aquarium Level, Sep 2026) and `doomsday-*.jpg` (Doomsday Level Blockout, Aug 2026), Level Design; `mr-stickbug-1.jpg` and `games/mr-stickbug.html` (mr.stickbug, 2D Platformer, Oct 2026).
 - No current portrait (the 2015 one was removed). No CV, clients or studio credits on hand: do not invent them.
 
 ## Product Principles
