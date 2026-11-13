@@ -2,6 +2,25 @@
 # To add a picture to a slideshow: copy two lines under "slides", change them.
 # The order here is the order on the page.
 
+- title: Lethal Grace
+  img: lethal-grace-atrium.jpg
+  date: Coming 2027
+  category: First-Person Shooter
+  description: Antelus Games, first-person action shooter on Steam
+  link: https://store.steampowered.com/app/4118480/Lethal_Grace/
+  link_label: View on Steam
+  slides:
+    - img: lethal-grace-1.jpg
+      description: Gameplay screenshot, garden under the light ceiling
+    - img: lethal-grace-2.jpg
+      description: Gameplay screenshot, palms and steel beams
+    - img: lethal-grace-3.jpg
+      description: Gameplay screenshot, misty jungle hall
+    - img: lethal-grace-4.jpg
+      description: Gameplay screenshot, glass atrium in fog
+    - img: lethal-grace-5.jpg
+      description: Gameplay screenshot, along the glass wall
+
 - title: Aquarium Level
   img: aquarium-canal.jpg
   date: Sep 9, 2026

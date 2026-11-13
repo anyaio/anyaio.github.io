@@ -23,7 +23,7 @@ Everything is done in the browser on github.com. Nothing to install.
 
 In the same file, copy a whole block (from `- title` to its last slide) and change it.
 `img` is the big main image; the order of blocks is the order on the page.
-`slides` is optional. An optional `link` adds a "Play the game" link under the title; games live in `games/`.
+`slides` is optional. An optional `link` adds a link under the title ("Play the game" unless `link_label` says otherwise, e.g. "View on Steam"); games live in `games/`, outside links open in a new tab.
 
 ## Add a 3D model
 

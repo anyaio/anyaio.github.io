@@ -24,7 +24,7 @@ Anya adds a picture by uploading an image to `img/portfolio/` and adding two lin
 
 ## Capabilities and Constraints
 
-- Projects list: title, img (main image), date, category, description, optional slides (each with img and description), optional link to a playable game in `games/`. Shown in file order.
+- Projects list: title, img (main image), date, category, description, optional slides (each with img and description), optional link (a playable game in `games/` or an outside page such as Steam) with optional `link_label`. Shown in file order.
 - 3D Models: `_data/models.yml` (title, img, optional model = a GLB in `models/`), small images at the bottom of the page, no dates. Blue Crystal is a rotatable 3D model.
 - Eco Room and the 2015 "Early work" archive were removed from the site on Anya's request (2026-11-05); they remain in git history.
 - Contact: Instagram https://www.instagram.com/anyabeloved_/ only. Old links (twitter anya_io, instagram anya_phuket, github anyaio) and the 2015 story timeline are retired.
@@ -36,7 +36,7 @@ Name: Anya Belova. Domain anya.io. The 2015 voice ("let me design for you", "my 
 
 ## Evidence on Hand
 
-- Current work: `img/portfolio/aquarium-*.jpg` (Aquarium Level, Sep 2026) and `doomsday-*.jpg` (Doomsday Level Blockout, Aug 2026), Level Design; `mr-stickbug-1.jpg` and `games/mr-stickbug.html` (mr.stickbug, 2D Platformer, Oct 2026).
+- Current work: `lethal-grace-*.jpg` (Lethal Grace, Antelus Games, first-person shooter on Steam, coming 2027); `img/portfolio/aquarium-*.jpg` (Aquarium Level, Sep 2026) and `doomsday-*.jpg` (Doomsday Level Blockout, Aug 2026), Level Design; `mr-stickbug-1.jpg` and `games/mr-stickbug.html` (mr.stickbug, 2D Platformer, Oct 2026).
 - No current portrait (the 2015 one was removed). No CV, clients or studio credits on hand: do not invent them.
 
 ## Product Principles
