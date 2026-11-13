@@ -103,7 +103,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           </div>
           <span class="mt-2 block text-sm text-neutral-100">{{ model.title }}</span>
           {% else %}
-          <button type="button" data-full="/img/portfolio/{{ model.img }}" data-title="{{ model.title }}" data-meta="3D Models" aria-label="Open {{ model.title }}" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
+          <button type="button" data-full="/img/portfolio/{{ model.img }}" data-title="{{ model.title }}" data-meta="3D Models"{% if model.depth %} data-lb-cutout="/img/portfolio/{{ model.cutout }}" data-lb-depthmap="/img/portfolio/{{ model.depth }}"{% endif %} aria-label="Open {{ model.title }}" class="group block w-full cursor-zoom-in text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-100">
             {% if model.depth %}
             <span data-depth="/img/portfolio/{{ model.depth }}" class="relative block aspect-square w-full">
               <img src="/img/portfolio/{{ model.cutout }}" alt="" loading="lazy" class="absolute inset-0 h-full w-full object-contain">
@@ -124,9 +124,10 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
   <dialog id="lightbox" aria-label="Image viewer" class="m-auto max-h-dvh max-w-none bg-transparent p-4 text-neutral-300 sm:p-8">
     <img data-lb-img alt="" draggable="false" class="mx-auto max-h-[82dvh] w-auto max-w-full touch-pan-y object-contain">
+    <span data-lb-stage hidden role="img" class="relative mx-auto block aspect-square w-[min(82dvh,92vw)] touch-pan-y"></span>
     <div class="mx-auto mt-4 flex max-w-5xl flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-sm">
       <p><span data-lb-title class="font-medium text-neutral-50"></span> <span data-lb-desc class="text-neutral-400"></span></p>
-      <p class="text-neutral-400"><span data-lb-meta></span> · <span data-lb-count class="tabular-nums"></span></p>
+      <p class="text-neutral-400"><span data-lb-meta></span><span data-lb-count class="tabular-nums"></span></p>
     </div>
     <button type="button" data-lb-prev aria-label="Previous image" class="fixed top-1/2 left-2 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-neutral-950/60 text-neutral-200 transition-colors hover:bg-neutral-800 hover:text-neutral-50 focus-visible:outline-2 focus-visible:outline-neutral-100 sm:left-4">
       <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
@@ -224,8 +225,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
     // Depth parallax: a cut-out picture plus its depth map, drawn with WebGL so near
     // parts shift more than far ones. Sways by itself; follows the mouse on hover.
-    document.querySelectorAll('[data-depth]').forEach(box => {
-      const still = box.querySelector('img')
+    const depthView = (box, imgSrc, depthSrc, still) => {
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
       const canvas = document.createElement('canvas')
       canvas.className = 'absolute inset-0 h-full w-full'
@@ -256,7 +256,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       const offLoc = gl.getUniformLocation(prog, 'off')
       let target = [0, 0], cur = [0, 0], hover = false, visible = false, running = false, t0 = performance.now()
       const draw = () => {
-        const size = Math.min(800, Math.round(box.clientWidth * devicePixelRatio))
+        const size = Math.min(1600, Math.round(box.clientWidth * devicePixelRatio))
         if (canvas.width !== size) { canvas.width = canvas.height = size; gl.viewport(0, 0, size, size) }
         gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT)
         gl.uniform2f(offLoc, cur[0], cur[1])
@@ -274,11 +274,11 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         visible = entry.isIntersecting
         if (!visible) return
         if (!canvas.isConnected) {
-          Promise.all([load(still.currentSrc || still.src), load(box.dataset.depth)]).then(([img, dep]) => {
+          Promise.all([load(imgSrc), load(depthSrc)]).then(([img, dep]) => {
             texture(0, img); texture(1, dep)
             gl.uniform1i(gl.getUniformLocation(prog, 'img'), 0)
             gl.uniform1i(gl.getUniformLocation(prog, 'dep'), 1)
-            box.append(canvas); draw(); still.style.opacity = 0
+            box.append(canvas); draw(); if (still) still.style.opacity = 0
             if (!reduce && !running) { running = true; requestAnimationFrame(frame) }
           }).catch(() => {})
         } else if (!reduce && !running) { running = true; requestAnimationFrame(frame) }
@@ -290,6 +290,10 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         target = [((e.clientX - r.left) / r.width - .5) * -.07, ((e.clientY - r.top) / r.height - .5) * -.05]
       })
       box.addEventListener('pointerleave', () => { hover = false; t0 = performance.now() - 1700 })
+    }
+    document.querySelectorAll('[data-depth]').forEach(el => {
+      const still = el.querySelector('img')
+      depthView(el, still.currentSrc || still.src, el.dataset.depth, still)
     })
 
     // Lightbox: opens any image large and steps through its project.
@@ -299,13 +303,22 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     let at = 0
     const show = i => {
       at = (i + items.length) % items.length
-      const { full, title, desc, meta } = items[at].dataset
-      part('img').src = full
+      const { full, title, desc, meta, lbCutout, lbDepthmap } = items[at].dataset
+      const stage = part('stage')
+      part('img').hidden = !!lbDepthmap
+      stage.hidden = !lbDepthmap
+      if (lbDepthmap) {
+        stage.setAttribute('aria-label', title)
+        if (stage.dataset.src !== lbCutout) { stage.replaceChildren(); stage.dataset.src = lbCutout; depthView(stage, lbCutout, lbDepthmap) }
+      } else {
+        part('img').src = full
+      }
       part('img').alt = desc ? `${title}, ${desc}` : title
       part('title').textContent = title
       part('desc').textContent = desc ? `— ${desc}` : ''
       part('meta').textContent = meta
-      part('count').textContent = `${at + 1} / ${items.length}`
+      part('count').textContent = items.length > 1 ? ` · ${at + 1} / ${items.length}` : ''
+      part('prev').hidden = part('next').hidden = items.length < 2
     }
     document.addEventListener('click', e => {
       const open = e.target.closest('[data-full]')
